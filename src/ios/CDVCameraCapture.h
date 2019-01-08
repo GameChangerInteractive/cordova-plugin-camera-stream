@@ -17,7 +17,7 @@
  under the License.
  */
 
-#import <GCMVP/CDVPlugin.h>
+#import <Cordova/CDVPlugin.h>
 #import "AVFoundation/AVFoundation.h"
 
 @interface CDVCameraCapture : CDVPlugin <AVCaptureVideoDataOutputSampleBufferDelegate>
