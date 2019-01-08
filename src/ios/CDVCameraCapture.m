@@ -211,6 +211,31 @@
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
 
+- (void) grantPermission:(CDVInvokedUrlCommand*)command
+{
+    AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+    
+    if(authStatus == AVAuthorizationStatusNotDetermined)
+    {
+        [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
+            CDVPluginResult* pluginResult;
+            
+            if(granted){
+                pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+            } else {
+                pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
+            }
+            
+            [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+        }];
+        
+        return;
+    }
+    
+    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+}
+
 - (UIImage *) rotatedImage:(UIImage *) image rotation:(CGFloat) rotation// rotation in radians
 {
     // Calculate Destination Size

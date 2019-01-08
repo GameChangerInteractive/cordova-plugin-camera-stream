@@ -17,7 +17,7 @@
  under the License.
  */
 
-#import <Cordova/CDVPlugin.h>
+#import <GCMVP/CDVPlugin.h>
 #import "AVFoundation/AVFoundation.h"
 
 @interface CDVCameraCapture : CDVPlugin <AVCaptureVideoDataOutputSampleBufferDelegate>
@@ -26,6 +26,7 @@
 @property AVCaptureSession *session;
 
 - (void) startCapture:(CDVInvokedUrlCommand*)command;
+- (void) grantPermission:(CDVInvokedUrlCommand*)command;
 - (void) stopCapture:(CDVInvokedUrlCommand*)command;
 - (BOOL) findCamera: (BOOL) useFrontCamera;
 - (BOOL) attachCameraToCaptureSession;
