@@ -1,4 +1,3 @@
-
 <plugin id="cordova-plugin-camera-stream" version="0.1.4" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
     <name>CameraStream</name>
     <js-module name="CameraStream" src="www/CameraStream.js">
